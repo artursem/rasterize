@@ -4,13 +4,13 @@ let diameter;
 let img;
 let pixelColor;
 let brightness;
-let increment = 300;
+let increment = 10;
 
 function preload() {
   img = loadImage('assets/venus-milo.jpg');
 }
 function setup() {
-  createCanvas(900, 900);
+  createCanvas(400, 400);
   noStroke()
   fill(160)
   
@@ -18,6 +18,16 @@ function setup() {
   
   background(0);
   image(img, 0, 0, width, height);
+  img.resize(400,400)
+
+  createLoop({
+    duration: 8, 
+    framesPerSecond: 60, 
+    gif: true,    
+    gifFileName: '20230714_rasterize-venus-thumbnail.gif', 
+    open: true, 
+    download: true
+  });
 }
 
 function getBrightness(array) {
@@ -30,8 +40,8 @@ function getBrightness(array) {
 function draw() {
   background(0);
   // tiles = 300 * mouseX / width;
-  // increment ++;
-  tiles = 300 * increment / width;
+  increment ++;
+  tiles = 100 * increment / width;
 
   tileSize = width / tiles;
  
